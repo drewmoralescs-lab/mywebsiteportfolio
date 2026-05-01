@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Portfolio</title>
+
+<style>
+    
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #0f0f0f;
+        color: white;
+        line-height: 1.6;
+        overflow-x: hidden;
+    }
+
+    /* HERO */
+    header {
+        position: relative;
+        text-align: center;
+        color: white;
+    }
+
+    .hero {
+        width: 100%;
+        height: 320px;
+        object-fit: cover;
+        filter: brightness(40%);
+    }
+
+    .hero-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    header h1 {
+        font-size: 42px;
+        margin: 0;
+    }
+
+    header p {
+        margin: 5px 0;
+        color: #ddd;
+    }
+
+    section {
+        padding: 60px 20px;
+        max-width: 1000px;
+        margin: auto;
+    }
+
+    h2 {
+        border-left: 5px solid #00adb5;
+        padding-left: 10px;
+        margin-bottom: 20px;
+    }
+
+    .card {
+        background: #1e1e1e;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 10px;
+    }
+
+    .skills span {
+        display: inline-block;
+        background: #00adb5;
+        padding: 5px 10px;
+        margin: 5px;
+        border-radius: 5px;
+        font-size: 12px;
+    }
+
+    .apps img {
+        width: 45px;
+        height: 45px;
+        margin: 5px;
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 15px;
+    }
+
+    .grid img {
+        width: 100%;
+        border-radius: 10px;
+    }
+
+    iframe, video {
+        width: 100%;
+        height: 250px;
+        border-radius: 10px;
+    }
+
+    a {
+        color: #00adb5;
+        text-decoration: none;
+    }
+
+    footer {
+        text-align: center;
+        padding: 30px;
+        background: #1a1a1a;
+        color: #aaa;
+    }
+
+    /* =========================
+       ✨ SCROLL ANIMATION
+    ========================= */
+
+    .hidden {
+        opacity: 0;
+        transform: translateY(50px);
+        transition: all 0.8s ease;
+    }
+
+    .show {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    .grid img,
+video {
+    transition: 0.3s ease;
+}
+html {
+    scroll-behavior: smooth;
+}
+.hidden {
+    opacity: 0;
+    transform: translateY(60px);
+    transition: all 1s ease;
+}
+
+.hidden.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.grid img:hover,
+video:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(0,173,181,0.4);
+}
+    
+
+.bg-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.bg-animation span {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    background: rgba(0, 173, 181, 0.15);
+    border-radius: 50%;
+    bottom: -150px;
+    animation: floatUp 22s linear infinite;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-1200px) scale(0.4);
+        opacity: 0;
+    }
+
+    
+}
+</style>
+
+
+</head>
+
+<body>
+
+    
+<!-- MOVING BACKGROUND (ADDED ONLY) -->
+<div class="bg-animation">
+    <span style="left:10%; animation-duration:18s;"></span>
+    <span style="left:20%; animation-duration:25s;"></span>
+    <span style="left:35%; animation-duration:20s;"></span>
+    <span style="left:50%; animation-duration:28s;"></span>
+    <span style="left:65%; animation-duration:22s;"></span>
+    <span style="left:80%; animation-duration:24s;"></span>
+    <span style="left:90%; animation-duration:30s;"></span>
+</div>
+<!-- HERO -->
+<header class="hidden" style="display: flex; align-items: center; justify-content: center; gap: 30px; padding: 60px 20px;">
+
+    <!-- PROFILE IMAGE -->
+    <img src="pfp.jpg" 
+         alt="Profile Picture"
+         style="
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #00adb5;
+         ">
+
+    <!-- TEXT -->
+    <div class="hero-text" style="position: static; transform: none; text-align: left;">
+        <h1 style="margin: 0;">Drew R. Morales</h1>
+        <p>Video Editor | Graphic Designer | UI/UX Design</p>
+        <p>"Creating visuals that tell stories."</p>
+    </div>
+
+</header>
+
+<!-- ABOUT -->
+<section class="hidden">
+    <h2>About Me</h2>
+    <div class="card">
+        I am a Computer Science graduate who is passionate about video editing, graphic design, and creative visual storytelling. I enjoy turning ideas into visuals and improving my skills through practice and personal projects. I focus on creating clean and engaging designs that communicate ideas effectively.
+    </div>
+</section>
+
+<!-- EDUCATION -->
+<section class="hidden">
+    <h2>Education</h2>
+
+    <div class="card">
+        <h3>Bachelor of Science in Computer Science</h3>
+        <p>
+            Focused on video editing, graphic design, UI/UX design, and video transitions.
+            Developed creative skills through projects and hands-on editing work.
+        </p>
+        <p>
+            School: St. Paul University at San Miguel<br>
+            Year: 2022 - 2026
+        </p>
+    </div>
+
+</section>
+
+<!-- TOOLS -->
+<section class="hidden">
+    <h2>Tools I Use</h2>
+    <div class="card apps">
+        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968520.png">
+        <img src="ae icon.jpg">
+        <img src="canva.jpg">
+        <img src="ad8b2cf5e7b44514ab71b9fd9666ec16.jpg">
+    </div>
+</section>
+
+<!-- SKILLS -->
+<section class="hidden">
+    <h2>Skills</h2>
+    <div class="card skills">
+        <span>Video Editing</span>
+        <span>Graphic Design</span>
+        <span>UI|UX Design</span>
+        <span>Film Editing</span>
+        <span>Typography</span>
+    </div>
+</section>
+
+<!-- GRAPHIC DESIGN -->
+<!-- GRAPHIC DESIGN -->
+<section class="hidden">
+    <h2>Graphic Design Works</h2>
+
+    <div class="grid">
+
+        <div class="card">
+            <img src="sample 1.jpg" alt="Design 1">
+        </div>
+
+        <div class="card">
+            <img src="sample 2.jpg" alt="Design 2">
+        </div>
+
+        <div class="card">
+            <img src="sample 3.jpg" alt="Design 3">
+        </div>
+
+        <div class="card">
+            <img src="images/design4.jpg" alt="Design 4">
+        </div>
+
+        <div class="card">
+            <img src="images/design5.jpg" alt="Design 5">
+        </div>
+
+        <div class="card">
+            <img src="images/design6.jpg" alt="Design 6">
+        </div>
+
+        <div class="card">
+            <img src="images/design7.jpg" alt="Design 7">
+        </div>
+
+        <div class="card">
+            <img src="images/design8.jpg" alt="Design 8">
+        </div>
+
+        <div class="card">
+            <img src="images/design9.jpg" alt="Design 9">
+        </div>
+
+        <div class="card">
+            <img src="images/design10.jpg" alt="Design 10">
+        </div>
+
+    </div>
+</section>
+
+<!-- VIDEO EDITING -->
+<!-- VIDEO EDITING -->
+<section class="hidden">
+    <h2>Video Edit Sample</h2>
+
+    <div class="grid">
+
+        <div class="card">
+    <video controls autoplay muted loop playsinline>
+        <source src="video 1.mp4" type="video/mp4">
+    </video>
+</div>
+
+<div class="card">
+    <video controls autoplay muted loop playsinline>
+        <source src="video 2.mp4" type="video/mp4">
+    </video>
+</div>
+
+<div class="card">
+    <video controls autoplay muted loop playsinline>
+        <source src="video 3.mp4" type="video/mp4">
+    </video>
+</div>
+
+<div class="card">
+    <video controls autoplay muted loop playsinline>
+        <source src="video 4.mp4" type="video/mp4">
+    </video>
+</div>
+
+<div class="card">
+    <video controls autoplay muted loop playsinline>
+        <source src="video 5.mp4" type="video/mp4">
+    </video>
+</div>
+
+<div class="card">
+    <video controls autoplay muted loop playsinline>
+        <source src="video 6.mp4" type="video/mp4">
+    </video>
+</div>
+
+<div class="card">
+    <video controls autoplay muted loop playsinline>
+        <source src="video 8.mp4" type="video/mp4">
+    </video>
+</div>
+
+<div class="card">
+    <video controls autoplay muted loop playsinline>
+        <source src="video 9.mp4" type="video/mp4">
+    </video>
+</div>
+
+<div class="card">
+    <video controls autoplay muted loop playsinline>
+        <source src="video 10.mp4" type="video/mp4">
+    </video>
+</div>
+
+<div class="card">
+    <video controls autoplay muted loop playsinline>
+        <source src="video 11.mp4" type="video/mp4">
+    </video>
+</div>
+
+<div class="card">
+    <video controls autoplay muted loop playsinline>
+        <source src="videos/edit11.mp4" type="video/mp4">
+    </video>
+</div>
+
+<div class="card">
+    <video controls autoplay muted loop playsinline>
+        <source src="videos/edit12.mp4" type="video/mp4">
+    </video>
+</div>
+
+    
+
+    </div>
+</section>
+
+<!-- CONTACT -->
+<!-- CONTACT -->
+<!-- CONTACT -->
+<!-- CONTACT -->
+<section class="hidden">
+    <h2>Contact</h2>
+    <div class="card">
+
+        Email:
+        <a href="mailto:drewmorales.cs@gmail.com">
+            drewmorales.cs@gmail.com
+        </a>
+        <br>
+
+        LinkedIn:
+        <a href="https://www.linkedin.com/in/drew-morales" target="_blank">
+            linkedin.com/in/drew-morales
+        </a>
+        <br>
+
+        Instagram:
+        <a href="https://www.instagram.com/_chaepuccino/" target="_blank">
+            @_chaepuccino
+        </a>
+        
+
+    </div>
+</section>
+
+    </div>
+</section>
+    </div>
+</section>
+<footer class="hidden">
+    © 2026 Drew Morales | Portfolio
+</footer>
+
+<!-- =========================
+     JAVASCRIPT SCROLL EFFECT
+========================= -->
+<script>
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+        }
+    });
+});
+
+const hiddenElements = document.querySelectorAll(".hidden");
+hiddenElements.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
