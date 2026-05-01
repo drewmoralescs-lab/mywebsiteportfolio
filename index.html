@@ -97,6 +97,98 @@
         height: 250px;
         border-radius: 10px;
     }
+    .gradient-bg {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(-45deg,
+        #0f0f0f,
+        #111a1c,
+        #0a1416,
+        #0f0f0f
+    );
+    background-size: 400% 400%;
+    animation: gradientMove 18s ease infinite;
+    opacity: 1;
+}
+
+/* soft moving animation */
+@keyframes gradientMove {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+    .thank-you {
+    height: 450px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    background: url("thankyou-bg.jpg") center/cover no-repeat;
+    position: relative;
+
+    border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+/* dark + subtle gradient overlay */
+.thank-you::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to top,
+        rgba(0,0,0,0.85),
+        rgba(0,0,0,0.4)
+    );
+}
+
+.thank-text {
+    position: relative;
+    z-index: 1;
+    animation: fadeUp 1.2s ease;
+}
+
+.thank-text h1 {
+    font-size: 55px;
+    margin: 0;
+    color: #00adb5;
+    letter-spacing: 2px;
+    text-shadow: 0 0 15px rgba(0,173,181,0.4);
+}
+
+.thank-text p {
+    color: #ddd;
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+.thank-text .sub {
+    display: block;
+    margin-top: 8px;
+    font-size: 14px;
+    color: #888;
+    letter-spacing: 1px;
+}
+
+/* animation */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
     a {
         color: #00adb5;
@@ -109,6 +201,7 @@
         background: #1a1a1a;
         color: #aaa;
     }
+    
 
     /* =========================
        ✨ SCROLL ANIMATION
@@ -434,6 +527,19 @@ video:hover {
 
     </div>
 </section>
+
+<!-- THANK YOU SECTION -->
+<section class="hidden thank-you">
+    <div class="gradient-bg"></div>
+    <div class="thank-text">
+        <h1>Thank You</h1>
+        <p>For visiting my portfolio</p>
+        <span class="sub">Let’s create something amazing together</span>
+    </div>
+</section>
+
+
+
 <!-- RESUME DOWNLOAD -->
 <section class="hidden" style="text-align:center; padding:80px 20px;">
     <div style="
@@ -467,6 +573,8 @@ video:hover {
             ⬇ Download Resume
         </a>
 
+    </div>
+</section>
     </div>
 </section>
     </div>
