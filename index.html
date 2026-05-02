@@ -6,187 +6,6 @@
 <title>My Portfolio</title>
 
 <style>
-    /* =========================
-   MOBILE RESPONSIVE FIX
-========================= */
-@media (max-width: 768px) {
-
-    /* prevent horizontal cut / overflow */
-    body {
-        overflow-x: hidden;
-    }
-
-    section {
-        padding: 30px 15px;
-        max-width: 100%;
-    }
-
-    /* HERO CENTER FIX */
-    header[style] {
-        flex-direction: column !important;
-        text-align: center !important;
-        gap: 15px !important;
-    }
-
-    .hero-text {
-        text-align: center !important;
-    }
-
-    /* PROFILE SIZE FIX */
-    .profile-ring {
-        width: 140px;
-        height: 140px;
-    }
-
-    .profile-ring img {
-        width: 120px;
-        height: 120px;
-    }
-
-    /* =========================
-       GRAPHIC GRID FIX
-    ========================= */
-    .grid {
-        grid-template-columns: 1fr !important;
-        gap: 15px;
-    }
-
-    /* =========================
-       VIDEO SLIDER FIX
-    ========================= */
-    .video-stagger {
-        grid-template-columns: 1fr !important;
-        padding: 20px 10px;
-    }
-
-    .video-card {
-        transform: none !important;
-    }
-
-    /* =========================
-       UI SLIDER FIX (IMPORTANT)
-    ========================= */
-    #ui {
-        padding: 40px 10px !important;
-    }
-
-    .ui-slider {
-        padding: 20px 0;
-        overflow-x: hidden;
-    }
-
-    .ui-track {
-        gap: 12px;
-        animation: none !important; /* stop glitch sa phone */
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        -webkit-overflow-scrolling: touch;
-        padding: 10px;
-    }
-
-    .ui-track::-webkit-scrollbar {
-        display: none;
-    }
-
-    .ui-track .card {
-        min-width: 220px;
-        transform: none !important;
-        opacity: 1;
-        scroll-snap-align: center;
-    }
-
-    /* =========================
-       DIVIDER TEXT FIX
-    ========================= */
-    .divider-text {
-        font-size: 18px;
-    }
-
-    /* =========================
-       THANK YOU FIX
-    ========================= */
-    .thank-text h1 {
-        font-size: 40px;
-    }
-
-    /* =========================
-       RESUME SECTION FIX
-    ========================= */
-    section[style*="text-align:center"] > div {
-        width: 90% !important;
-        padding: 25px !important;
-    }
-}
-.video-slant {
-    display: flex;
-    gap: 20px;
-    overflow-x: auto;
-    padding: 40px 20px;
-
-    /* IMPORTANT FIX */
-    flex-wrap: nowrap;
-    width: 100vw;
-    max-width: 100vw;
-}
-.video-slant::-webkit-scrollbar {
-    display: none;
-}
-
-.video-card {
-    flex: 0 0 320px;
-    scroll-snap-align: center;
-    transform: rotate(-8deg);
-    transition: 0.4s ease;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-}
-.video-stagger {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 25px;
-    padding: 40px 20px;
-}
-
-/* stagger effect */
-.video-stagger .video-card {
-    transform: translateY(0) rotate(-3deg);
-    transition: 0.4s ease;
-}
-
-.video-stagger .video-card:nth-child(even) {
-    transform: translateY(30px) rotate(3deg);
-}
-
-/* hover reset */
-.video-stagger .video-card:hover {
-    transform: translateY(0) rotate(0deg) scale(1.05);
-    z-index: 10;
-}
-
-/* video styling */
-.video-card video {
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
-    border-radius: 12px;
-}
-
-.video-card:nth-child(even) {
-    transform: rotate(8deg);
-}
-
-.video-card:hover {
-    transform: rotate(0deg) scale(1.05);
-    z-index: 10;
-}
-
-.video-card video {
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
-    display: block;
-}
     
     
     body {
@@ -206,56 +25,6 @@
     width: 0%;
     z-index: 9999;
 }
-/* UI SLIDER */
-.ui-slider {
-    position: relative;
-    overflow: hidden;
-}
-
-.ui-track {
-    display: flex;
-    gap: 20px;
-    width: max-content;
-    animation: scrollUI 80s linear infinite;
-}
-
-/* smooth infinite scroll */
-@keyframes scrollUI {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(-50%);
-    }
-}
-
-.ui-track .card {
-    min-width: 300px;
-    flex: 0 0 auto;
-}
-
-/* arrows */
-.ui-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0,0,0,0.6);
-    border: none;
-    color: white;
-    font-size: 24px;
-    padding: 10px 15px;
-    cursor: pointer;
-    z-index: 5;
-    border-radius: 6px;
-}
-
-.ui-btn:hover {
-    background: #00adb5;
-    color: black;
-}
-
-.ui-prev { left: 10px; }
-.ui-next { right: 10px; }
 .card img {
     transition: 0.3s ease;
 }
@@ -347,20 +116,11 @@
         margin: 5px 0;
         color: #ddd;
     }
-section {
-    padding: 40px 20px;
+
+    section {
+    padding: 40px 20px; /* from 60 → 40 */
     max-width: 1000px;
     margin: auto;
-}
-
-#works, #ui {
-    max-width: none;
-}
-.thank-you {
-    max-width: none !important;
-    width: 100vw;
-    margin: 0;
-    padding: 80px 20px;
 }
     
 
@@ -426,72 +186,6 @@ section {
         transparent 70%
     );
 }
-#ui {
-    max-width: 1500px;
-    margin: auto;
-    padding: 70px 100px;
-}
-.ui-track {
-    display: flex;
-    gap: 20px;
-    align-items: center;
-    width: max-content;
-    animation: scrollUI 60s linear infinite;
-}
-
-/* default cards */
-.ui-track .card {
-    min-width: 280px;
-    transition: all 0.4s ease;
-    transform: scale(0.9);
-    opacity: 0.6;
-}
-.ui-slider {
-    overflow: hidden;
-    position: relative;
-    padding: 40px 0;
-}
-
-/* soft fade left/right edges */
-.ui-slider::before,
-.ui-slider::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    width: 120px;
-    height: 100%;
-    z-index: 2;
-    pointer-events: none;
-}
-/* CENTER / HOVER spotlight */
-.ui-track .card:hover {
-    transform: scale(1.15);
-    opacity: 1;
-    z-index: 10;
-    box-shadow: 0 0 30px rgba(0,173,181,0.4);
-}
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    color: white;
-    line-height: 1.6;
-    overflow-x: hidden;
-    background: #0b0f14;
-}
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    z-index: -2;
-
-    background: radial-gradient(circle at 20% 20%, rgba(0,173,181,0.25), transparent 40%),
-                radial-gradient(circle at 80% 30%, rgba(0,80,255,0.15), transparent 40%),
-                radial-gradient(circle at 50% 80%, rgba(0,255,200,0.12), transparent 50%),
-                radial-gradient(circle at 90% 90%, rgba(0,173,181,0.10), transparent 50%);
-
-    filter: blur(60px);
-    animation: meshMove 18s ease-in-out infinite alternate;
-}
 
 /* animation */
 @keyframes moveGradient {
@@ -516,14 +210,12 @@ body::before {
         height: 250px;
         border-radius: 10px;
     }
-    
     /* UI SECTION CLEAN */
 .ui-section {
-    max-width: 1400px;   /* dati 1000px → mas malawak */
+    max-width: 1000px;
     margin: auto;
-    padding: 60px 80px;  /* dagdag space left/right */
+    padding: 40px 20px;
 }
-
 
 /* TEXT */
 .ui-section h2 {
@@ -584,26 +276,19 @@ body::before {
     }
 }
 
-  .thank-you {
-    width: 100%;
-    min-height: 500px;
+    .thank-you {
+    height: 450px;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
 
+    background: url("thankyou-bg.jpg") center/cover no-repeat;
     position: relative;
-    padding: 80px 20px;
 
-    background: linear-gradient(
-        135deg,
-        #0f0f0f,
-        #111a1c,
-        #0a1416
-    );
-
-    overflow: hidden;
+    border-top: 1px solid rgba(255,255,255,0.08);
 }
+
 /* dark + subtle gradient overlay */
 .thank-you::before {
     content: "";
@@ -615,68 +300,33 @@ body::before {
         rgba(0,0,0,0.4)
     );
 }
-@keyframes thankPop {
-    from {
-        opacity: 0;
-        transform: scale(0.8) translateY(40px);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1) translateY(0);
-    }
-}
-
-@keyframes fadeUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes glow {
-    from {
-        text-shadow: 0 0 10px rgba(0,173,181,0.3);
-    }
-    to {
-        text-shadow: 0 0 25px rgba(0,173,181,0.8);
-    }
-}
 
 .thank-text {
     position: relative;
     z-index: 1;
-    font-family: 'Montserrat', sans-serif;
-    animation: thankPop 1.2s ease forwards;
+    animation: fadeUp 1.2s ease;
 }
 
 .thank-text h1 {
-    font-size: 70px;
+    font-size: 55px;
     margin: 0;
     color: #00adb5;
-    letter-spacing: 3px;
-
-    text-shadow: 0 0 20px rgba(0,173,181,0.5);
-    animation: glow 2.5s ease-in-out infinite alternate;
+    letter-spacing: 2px;
+    text-shadow: 0 0 15px rgba(0,173,181,0.4);
 }
 
 .thank-text p {
-    font-size: 20px;
     color: #ddd;
+    font-size: 18px;
     margin-top: 10px;
-    animation: fadeUp 1.5s ease forwards;
 }
 
 .thank-text .sub {
     display: block;
-    margin-top: 10px;
+    margin-top: 8px;
     font-size: 14px;
     color: #888;
     letter-spacing: 1px;
-    animation: fadeUp 1.8s ease forwards;
 }
 
 /* animation */
@@ -1073,75 +723,75 @@ I also have basic knowledge of HTML and CSS, allowing me to understand and creat
 <section class="hidden">
     <h2>Video Edit Sample</h2>
 
-    <div class="video-stagger">
+    <div class="grid">
 
-        <div class="video-card">
+        <div class="card">
     <video controls autoplay muted loop playsinline>
         <source src="video 1.mp4" type="video/mp4">
     </video>
 </div>
 
-<div class="video-card">
+<div class="card">
     <video controls autoplay muted loop playsinline>
         <source src="video 2.mp4" type="video/mp4">
     </video>
 </div>
 
-<div class="video-card">
+<div class="card">
     <video controls autoplay muted loop playsinline>
         <source src="video 3.mp4" type="video/mp4">
     </video>
 </div>
 
-<div class="video-card">
+<div class="card">
     <video controls autoplay muted loop playsinline>
         <source src="video 4.mp4" type="video/mp4">
     </video>
 </div>
 
-<div class="video-card">
+<div class="card">
     <video controls autoplay muted loop playsinline>
         <source src="video 5.mp4" type="video/mp4">
     </video>
 </div>
 
-<div class="video-card">
+<div class="card">
     <video controls autoplay muted loop playsinline>
         <source src="video 6.mp4" type="video/mp4">
     </video>
 </div>
 
-<div class="video-card">>
+<div class="card">
     <video controls autoplay muted loop playsinline>
         <source src="video 8.mp4" type="video/mp4">
     </video>
 </div>
 
-<div class="video-card">
+<div class="card">
     <video controls autoplay muted loop playsinline>
         <source src="video 9.mp4" type="video/mp4">
     </video>
 </div>
 
-<div class="video-card">
+<div class="card">
     <video controls autoplay muted loop playsinline>
         <source src="video 10.mp4" type="video/mp4">
     </video>
 </div>
 
-<div class="video-card">
+<div class="card">
     <video controls autoplay muted loop playsinline>
         <source src="video 11.mp4" type="video/mp4">
     </video>
 </div>
 
-<div class="video-card">
+<div class="card">
     <video controls autoplay muted loop playsinline>
         <source src="video 12.mp4" type="video/mp4">
     </video>
 </div>
 
-<div class="video-card">
+<div class="card">
     <video controls autoplay muted loop playsinline>
         <source src="video 13.mp4" type="video/mp4">
     </video>
@@ -1152,84 +802,53 @@ I also have basic knowledge of HTML and CSS, allowing me to understand and creat
     </div>
 </section>
 
+<!-- UI DESIGN -->
 <div class="divider">
-    <span class="divider-text">My Works</span>
+    <span class="divider-text">PROJECTS</span>
 </div>
 
-<section id="ui" class="hidden">
-    <h2>UI Design (Thesis)</h2>
+<section class="ui-section hidden">
 
-    <div class="ui-slider">
+    <h2>UI Design (Thesis Project)</h2>
+    <h3>System Title: ImprovED</h3>
 
+    <p>
+        This UI design is part of our thesis project focused on creating a clean,
+        modern, and user-friendly interface.
+    </p>
 
-        <!-- track -->
-        <div class="ui-track" id="uiTrack">
+    <p>
+        The goal is to improve usability, readability, and navigation flow while
+        maintaining a minimal and professional design system.
+    </p>
 
-    <div class="card"><img src="1.jpg"></div>
-    <div class="card"><img src="2.jpg"></div>
-    <div class="card"><img src="3.jpg"></div>
-    <div class="card"><img src="4.jpg"></div>
-    <div class="card"><img src="5.jpg"></div>
-    <div class="card"><img src="6.jpg"></div>
-    <div class="card"><img src="7.jpg"></div>
-    <div class="card"><img src="8.jpg"></div>
-     <div class="card"><img src="9.jpg"></div>
-    <div class="card"><img src="10.jpg"></div>
-    <div class="card"><img src="11.jpg"></div>
-    <div class="card"><img src="13.jpg"></div>
-    <div class="card"><img src="14.jpg"></div>
-    <div class="card"><img src="15.jpg"></div>
-    <div class="card"><img src="17.jpg"></div>
-    <div class="card"><img src="19.jpg"></div>
-    <div class="card"><img src="21.jpg"></div>
-
-    <!-- duplicate -->
-    <div class="card"><img src="1.jpg"></div>
-    <div class="card"><img src="2.jpg"></div>
-    <div class="card"><img src="3.jpg"></div>
-    <div class="card"><img src="4.jpg"></div>
-    <div class="card"><img src="5.jpg"></div>
-    <div class="card"><img src="6.jpg"></div>
-    <div class="card"><img src="7.jpg"></div>
-    <div class="card"><img src="8.jpg"></div>
-    <div class="card"><img src="9.jpg"></div>
-    <div class="card"><img src="10.jpg"></div>
-    <div class="card"><img src="11.jpg"></div>
-    <div class="card"><img src="13.jpg"></div>
-    <div class="card"><img src="14.jpg"></div>
-    <div class="card"><img src="15.jpg"></div>
-    <div class="card"><img src="17.jpg"></div>
-    <div class="card"><img src="19.jpg"></div>
-    <div class="card"><img src="21.jpg"></div>
-    
-
-</div>
-            
-
-        </div>
-<script>
-let scrollAmount = 0;
-const track = document.getElementById("uiTrack");
-const cardWidth = 320; // same as before
-const totalCards = track.children.length;
-
-function slideUI(direction = 1) {
-    scrollAmount += direction * cardWidth;
-
-    // loop back kapag umabot sa dulo
-    if (scrollAmount >= cardWidth * totalCards) {
-        scrollAmount = 0;
-    }
-
-    track.style.transform = `translateX(-${scrollAmount}px)`;
-}
-
-// AUTO SLIDE every 2.5 seconds
-setInterval(() => {
-    slideUI(1);
-}, 2500);
-</script>
+    <!-- IMAGE SA BABA -->
+    <div class="ui-bottom">
+        <img src="5.jpg">
     </div>
+
+    <!-- GRID NG UI -->
+    <div class="ui-grid">
+        <img src="1.jpg">
+        <img src="2.jpg">
+        <img src="3.jpg">
+        <img src="4.jpg">
+        <img src="5.jpg">
+        <img src="6.jpg">
+        <img src="7.jpg">
+        <img src="8.jpg">
+        <img src="9.jpg">
+        <img src="10.jpg">
+        <img src="11.jpg">
+        <img src="13.jpg">
+        <img src="14.jpg">
+        <img src="15.jpg">
+        <img src="17.jpg">
+        <img src="19.jpg">
+        <img src="20.jpg">
+        <img src="21.jpg">
+    </div>
+
 </section>
 
 <!-- CONTACT -->
@@ -1264,7 +883,6 @@ setInterval(() => {
 
 <!-- THANK YOU SECTION -->
 <section class="hidden thank-you">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
     <div class="gradient-bg"></div>
     <div class="thank-text">
         <h1>Thank You</h1>
