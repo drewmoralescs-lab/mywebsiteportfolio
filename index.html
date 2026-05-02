@@ -25,6 +25,14 @@
     width: 0%;
     z-index: 9999;
 }
+.card img {
+    transition: 0.3s ease;
+}
+
+.card img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(0,173,181,0.4);
+}
 .cursor-glow {
     position: fixed;
     width: 20px;
@@ -92,6 +100,17 @@
         font-size: 42px;
         margin: 0;
     }
+    .divider {
+    width: 100vw;              /* full screen width */
+    height: 120px;
+    margin: 60px 0;
+    position: relative;
+
+    left: 50%;
+    transform: translateX(-50%);
+
+    overflow: hidden;
+}
 
     header p {
         margin: 5px 0;
@@ -176,10 +195,10 @@
 }
 
     .grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 15px;
-    }
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 20px;
+}
 
     .grid img {
         width: 100%;
@@ -302,10 +321,17 @@
     ========================= */
 
     .hidden {
-        opacity: 0;
-        transform: translateY(50px);
-        transition: all 0.8s ease;
-    }
+    opacity: 0;
+    transform: translateY(40px) scale(0.98);
+    filter: blur(6px);
+    transition: all 0.9s ease;
+}
+
+.hidden.show {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+}
 
     .show {
         opacity: 1;
@@ -367,6 +393,58 @@ video:hover {
 /* para hindi matakpan ng navbar */
 section {
     scroll-margin-top: 80px;
+}
+.profile-ring {
+    position: relative;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* actual image */
+.profile-ring img {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    object-fit: cover;
+    z-index: 2;
+    border: 3px solid #00adb5;
+}
+
+/* rotating ring */
+.profile-ring::before {
+    content: "";
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 3px dashed rgba(0, 173, 181, 0.6);
+    animation: spin 6s linear infinite;
+}
+
+/* outer glow ring */
+.profile-ring::after {
+    content: "";
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 173, 181, 0.2);
+    animation: spinReverse 10s linear infinite;
+}
+
+/* animations */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes spinReverse {
+    0% { transform: rotate(360deg); }
+    100% { transform: rotate(0deg); }
 }
     
 
@@ -430,15 +508,10 @@ section {
 <!-- HERO -->
 <header class="hidden" style="display: flex; align-items: center; justify-content: center; gap: 30px; padding: 60px 20px;">
     <!-- PROFILE IMAGE -->
-    <img src="pfp.jpg" 
-         alt="Profile Picture"
-         style="
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid #00adb5;
-         ">
+    <div class="profile-ring">
+    <img src="pfp.jpg" alt="Profile Picture">
+</div>
+         
 
     <!-- TEXT -->
     <div class="hero-text" style="position: static; transform: none; text-align: left;">
@@ -635,6 +708,49 @@ section {
 
     
 
+    </div>
+</section>
+
+<!-- UI DESIGN (THESIS) -->
+ 
+<!-- FULL WIDTH DIVIDER FOR UI -->
+<div class="divider">
+    <div class="divider-text">MY WORKS</div>
+</div>
+
+<!-- UI DESIGN SECTION -->
+<section class="hidden">
+    <h2>UI Design (Thesis Project)</h2>
+
+    <div class="card">
+        <h3>System Title: ImprovED</h3>
+        <p>
+            
+        </p>
+    </div>
+
+    <div class="grid">
+        <div class="card"><img src="1.jpg" alt="UI 1"></div>
+        <div class="card"><img src="2.jpg" alt="UI 2"></div>
+        <div class="card"><img src="3.jpg" alt="UI 3"></div>
+        <div class="card"><img src="4.jpg" alt="UI 4"></div>
+        <div class="card"><img src="5.jpg" alt="UI 5"></div>
+        <div class="card"><img src="6.jpg" alt="UI 6"></div>
+        <div class="card"><img src="7.jpg" alt="UI 7"></div>
+        <div class="card"><img src="8.jpg" alt="UI 8"></div>
+        <div class="card"><img src="9.jpg" alt="UI 9"></div>
+        <div class="card"><img src="10.jpg" alt="UI 10"></div>
+        <div class="card"><img src="11.jpg" alt="UI 11"></div>
+        <div class="card"><img src="13.jpg" alt="UI 12"></div>
+        <div class="card"><img src="14.jpg" alt="UI 13"></div>
+        <div class="card"><img src="15.jpg" alt="UI 14"></div>
+        <div class="card"><img src="17.jpg" alt="UI 15"></div>
+        <div class="card"><img src="19.jpg" alt="UI 16"></div>
+        <div class="card"><img src="20.jpg" alt="UI 17"></div>
+        <div class="card"><img src="21.jpg" alt="UI 18"></div>
+        
+        
+        
     </div>
 </section>
 
