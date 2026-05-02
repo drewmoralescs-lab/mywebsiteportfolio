@@ -258,32 +258,6 @@ section {
         padding-left: 10px;
         margin-bottom: 20px;
     }
-    .grid .card {
-    background: transparent;
-    padding: 0;
-    border-radius: 0;
-    overflow: hidden;
-    position: relative;
-}
-.grid .card:hover img {
-    transform: scale(1.08);
-    filter: brightness(1.1);
-}
-.grid .card:hover img {
-    box-shadow: 0 15px 40px rgba(0,173,181,0.25);
-}
-
-.grid .card:hover {
-    z-index: 5;
-}
-.grid img {
-    width: 100%;
-    display: block;
-    border-radius: 14px;
-    transition: all 0.4s ease;
-    transform: scale(1);
-    filter: brightness(0.95);
-}
 
     .card {
         background: #1e1e1e;
@@ -415,10 +389,10 @@ body::before {
     100% { background-position: 0% 50%; }
 }
 
- .grid {
+    .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 18px;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 20px;
 }
 
     .grid img {
@@ -829,36 +803,6 @@ section {
     }
 
     
-}
-@media (max-width: 768px) {
-
-    .ui-slider {
-        padding: 20px 0;
-    }
-
-    .ui-track {
-        animation: none; /* STOP auto-scroll sa phone (fix cut issue) */
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        padding: 10px;
-    }
-
-    .ui-track::-webkit-scrollbar {
-        display: none;
-    }
-
-    .ui-track .card {
-        min-width: 240px;
-        transform: none !important; /* remove rotate/scale issues */
-        opacity: 1;
-        scroll-snap-align: center;
-    }
-
-    .ui-slider::before,
-    .ui-slider::after {
-        display: none; /* remove fade edges on mobile */
-    }
 }
 </style>
 
