@@ -16,6 +16,25 @@
         line-height: 1.6;
         overflow-x: hidden;
     }
+    #progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: #00adb5;
+    width: 0%;
+    z-index: 9999;
+}
+.cursor-glow {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    background: rgba(0,173,181,0.5);
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    filter: blur(8px);
+}
 
     /* HERO */
     header {
@@ -23,6 +42,37 @@
         text-align: center;
         color: white;
     }
+    .divider-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    font-size: 28px;
+    color: #00adb5;
+    letter-spacing: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+
+    border-right: 2px solid #00adb5;
+
+    width: 0;
+    animation: typingLoop 6s steps(12) infinite,
+               blink 0.7s infinite;
+}
+
+/* TYPE → HOLD → ERASE → LOOP */
+@keyframes typingLoop {
+    0%   { width: 0 }
+    40%  { width: 180px }  /* typing */
+    60%  { width: 180px }  /* pause */
+    100% { width: 0 }      /* erase */
+}
+
+/* CURSOR BLINK */
+@keyframes blink {
+    50% { border-color: transparent }
+}
 
     .hero {
         width: 100%;
@@ -284,6 +334,40 @@ video:hover {
     transform: scale(1.05);
     box-shadow: 0 0 20px rgba(0,173,181,0.4);
 }
+/* NAVBAR */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(15,15,15,0.6);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 15px 10px;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.navbar a {
+    color: #ddd;
+    text-decoration: none;
+    font-size: 14px;
+    padding: 8px 14px;
+    border-radius: 6px;
+    transition: 0.3s;
+}
+
+.navbar a:hover {
+    background: #00adb5;
+    color: black;
+}
+
+/* para hindi matakpan ng navbar */
+section {
+    scroll-margin-top: 80px;
+}
     
 
 .bg-animation {
@@ -325,7 +409,12 @@ video:hover {
 </head>
 
 <body>
-
+<div class="navbar">
+    <a href="#home">Home</a>
+    <a href="#about">About Me</a>
+    <a href="#works">Works</a>
+    <a href="#contact">Contact</a>
+</div>
     
 <!-- MOVING BACKGROUND (ADDED ONLY) -->
 <div class="bg-animation">
@@ -337,9 +426,9 @@ video:hover {
     <span style="left:80%; animation-duration:24s;"></span>
     <span style="left:90%; animation-duration:30s;"></span>
 </div>
+<header id="home" class="hidden"></header>
 <!-- HERO -->
 <header class="hidden" style="display: flex; align-items: center; justify-content: center; gap: 30px; padding: 60px 20px;">
-
     <!-- PROFILE IMAGE -->
     <img src="pfp.jpg" 
          alt="Profile Picture"
@@ -361,6 +450,7 @@ video:hover {
 </header>
 
 <!-- ABOUT -->
+ <section id="about" class="hidden"></section>
 <section class="hidden">
     <h2>About Me</h2>
     <div class="card">
@@ -408,7 +498,10 @@ video:hover {
         <span>Typography</span>
     </div>
 </section>
-<div class="divider"></div>
+<div class="divider">
+    <span class="divider-text">My Works</span>
+    <section id="works" class="hidden"></section>
+</div>
 <!-- GRAPHIC DESIGN -->
 <!-- GRAPHIC DESIGN -->
 <section class="hidden">
@@ -458,7 +551,9 @@ video:hover {
 
     </div>
 </section>
-<div class="divider"></div>
+<div class="divider">
+    <span class="divider-text">My Works</span>
+</div>
 <!-- VIDEO EDITING -->
 <!-- VIDEO EDITING -->
 <section class="hidden">
@@ -548,6 +643,7 @@ video:hover {
 <!-- CONTACT -->
 <!-- CONTACT -->
 <section class="hidden">
+    <section id="contact" class="hidden"></section>
     <h2>Contact</h2>
     <div class="card">
 
