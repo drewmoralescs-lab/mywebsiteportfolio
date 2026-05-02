@@ -231,6 +231,32 @@
     width: 100%;
     border-radius: 12px;
 }
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 0; /* dikit-dikit effect */
+}
+
+/* video tiles */
+.video-grid video {
+    width: 100%;
+    height: 280px;   /* 👈 dagdag height dito */
+    object-fit: cover;
+
+    border-radius: 0;
+    box-shadow: none;
+
+    transition: 0.4s ease;
+    filter: brightness(0.85);
+}
+
+/* hover highlight */
+.video-grid video:hover {
+    transform: scale(1.05);
+    z-index: 2;
+    filter: brightness(1.1);
+    box-shadow: 0 20px 40px rgba(0,173,181,0.25);
+}
 
 /* GRID IMAGES */
 .ui-grid {
@@ -552,6 +578,56 @@ section {
     bottom: -150px;
     animation: floatUp 22s linear infinite;
 }
+.auto-slider {
+    overflow: hidden;
+    width: 100%;
+    padding: 80px 0; /* 🔥 mas mataas space */
+    position: relative;
+}
+
+/* TRACK */
+.slider-track {
+    display: flex;
+    gap: 30px;
+    width: max-content;
+    animation: scroll 25s linear infinite;
+    align-items: center;
+}
+
+/* 🔥 MAS TALL + CINEMATIC */
+.slider-track img {
+    width: 340px;
+    height: 420px;   /* 🔥 DITO na malaking height fix */
+    object-fit: cover;
+
+    border-radius: 16px;
+
+    opacity: 0.6;
+    transform: scale(0.95);
+    transition: 0.4s ease;
+
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+
+/* highlight */
+.slider-track img:hover {
+    opacity: 1;
+    transform: scale(1.08);
+    z-index: 3;
+}
+
+/* animation */
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+section {
+    overflow: visible;
+}
+
+.auto-slider {
+    min-height: 500px; /* 🔥 forces vertical space */
+}
 
 @keyframes floatUp {
     0% {
@@ -671,49 +747,25 @@ I also have basic knowledge of HTML and CSS, allowing me to understand and creat
 <section class="hidden">
     <h2>Graphic Design Works</h2>
 
-    <div class="grid">
+    <div class="auto-slider">
+        <div class="slider-track">
 
-        <div class="card">
-            <img src="sample 1.jpg" alt="Design 1">
+            <img src="sample 1.jpg">
+<img src="sample 2.jpg">
+<img src="sample 3.jpg">
+<img src="sample 2 design.jpg">
+<img src="graphic design sample 1.jpg">
+
+<!-- duplicate copy -->
+<img src="sample 1.jpg">
+<img src="sample 2.jpg">
+<img src="sample 3.jpg">
+<img src="sample 2 design.jpg">
+<img src="graphic design sample 1.jpg">
+
         </div>
-
-        <div class="card">
-            <img src="sample 2.jpg" alt="Design 2">
-        </div>
-
-        <div class="card">
-            <img src="sample 3.jpg" alt="Design 3">
-        </div>
-
-        <div class="card">
-            <img src="sample 2 design.jpg" alt="Design 4">
-        </div>
-
-        <div class="card">
-            <img src="graphic design sample 1.jpg" alt="Design 5">
-        </div>
-
-        <div class="card">
-            <img src="images/design6.jpg" alt="Design 6">
-        </div>
-
-        <div class="card">
-            <img src="images/design7.jpg" alt="Design 7">
-        </div>
-
-        <div class="card">
-            <img src="images/design8.jpg" alt="Design 8">
-        </div>
-
-        <div class="card">
-            <img src="images/design9.jpg" alt="Design 9">
-        </div>
-
-        <div class="card">
-            <img src="images/design10.jpg" alt="Design 10">
-        </div>
-
     </div>
+
 </section>
 <div class="divider">
     <span class="divider-text">My Works</span>
@@ -723,104 +775,64 @@ I also have basic knowledge of HTML and CSS, allowing me to understand and creat
 <section class="hidden">
     <h2>Video Edit Sample</h2>
 
-    <div class="grid">
+    <div class="video-grid">
 
-        <div class="card">
-    <video controls autoplay muted loop playsinline>
-        <source src="video 1.mp4" type="video/mp4">
-    </video>
-</div>
+        <video controls autoplay muted loop playsinline>
+            <source src="video 1.mp4" type="video/mp4">
+        </video>
 
-<div class="card">
-    <video controls autoplay muted loop playsinline>
-        <source src="video 2.mp4" type="video/mp4">
-    </video>
-</div>
+        <video controls autoplay muted loop playsinline>
+            <source src="video 2.mp4" type="video/mp4">
+        </video>
 
-<div class="card">
-    <video controls autoplay muted loop playsinline>
-        <source src="video 3.mp4" type="video/mp4">
-    </video>
-</div>
+        <video controls autoplay muted loop playsinline>
+            <source src="video 3.mp4" type="video/mp4">
+        </video>
 
-<div class="card">
-    <video controls autoplay muted loop playsinline>
-        <source src="video 4.mp4" type="video/mp4">
-    </video>
-</div>
+        <video controls autoplay muted loop playsinline>
+            <source src="video 4.mp4" type="video/mp4">
+        </video>
+        <video controls autoplay muted loop playsinline>
+            <source src="video 5.mp4" type="video/mp4">
+        </video>
+        <video controls autoplay muted loop playsinline>
+            <source src="video 6.mp4" type="video/mp4">
+        </video>
+        <video controls autoplay muted loop playsinline>
+            <source src="video 7.mp4" type="video/mp4">
+        </video>
+        <video controls autoplay muted loop playsinline>
+            <source src="video 8.mp4" type="video/mp4">
+        </video>
+        <video controls autoplay muted loop playsinline>
+            <source src="video 9.mp4" type="video/mp4">
+        </video>
+        <video controls autoplay muted loop playsinline>
+            <source src="video 10.mp4" type="video/mp4">
+        </video>
+        <video controls autoplay muted loop playsinline>
+            <source src="video 11.mp4" type="video/mp4">
+        </video>
+        <video controls autoplay muted loop playsinline>
+            <source src="video 12.mp4" type="video/mp4">
+        </video>
+        <video controls autoplay muted loop playsinline>
+            <source src="video 13.mp4" type="video/mp4">
+        </video>
 
-<div class="card">
-    <video controls autoplay muted loop playsinline>
-        <source src="video 5.mp4" type="video/mp4">
-    </video>
-</div>
 
-<div class="card">
-    <video controls autoplay muted loop playsinline>
-        <source src="video 6.mp4" type="video/mp4">
-    </video>
-</div>
-
-<div class="card">
-    <video controls autoplay muted loop playsinline>
-        <source src="video 8.mp4" type="video/mp4">
-    </video>
-</div>
-
-<div class="card">
-    <video controls autoplay muted loop playsinline>
-        <source src="video 9.mp4" type="video/mp4">
-    </video>
-</div>
-
-<div class="card">
-    <video controls autoplay muted loop playsinline>
-        <source src="video 10.mp4" type="video/mp4">
-    </video>
-</div>
-
-<div class="card">
-    <video controls autoplay muted loop playsinline>
-        <source src="video 11.mp4" type="video/mp4">
-    </video>
-</div>
-
-<div class="card">
-    <video controls autoplay muted loop playsinline>
-        <source src="video 12.mp4" type="video/mp4">
-    </video>
-</div>
-
-<div class="card">
-    <video controls autoplay muted loop playsinline>
-        <source src="video 13.mp4" type="video/mp4">
-    </video>
-</div>
-
-    
 
     </div>
 </section>
 
 <!-- UI DESIGN -->
 <div class="divider">
-    <span class="divider-text">PROJECTS</span>
+    <span class="divider-text">MY WORKS</span>
 </div>
 
 <section class="ui-section hidden">
 
     <h2>UI Design (Thesis Project)</h2>
-    <h3>System Title: ImprovED</h3>
-
-    <p>
-        This UI design is part of our thesis project focused on creating a clean,
-        modern, and user-friendly interface.
-    </p>
-
-    <p>
-        The goal is to improve usability, readability, and navigation flow while
-        maintaining a minimal and professional design system.
-    </p>
 
     <!-- IMAGE SA BABA -->
     <div class="ui-bottom">
