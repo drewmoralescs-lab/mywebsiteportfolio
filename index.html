@@ -118,12 +118,11 @@
         color: #ddd;
     }
 
- section {
-    padding: 40px 20px;
+    section {
+    padding: 40px 20px; /* from 60 → 40 */
     max-width: 1000px;
     margin: auto;
 }
-
     
 
     h2 {
@@ -302,64 +301,29 @@
 .thank-text {
     position: relative;
     z-index: 1;
-    font-family: 'Montserrat', sans-serif;
-    animation: thankPop 1.2s ease forwards;
+    animation: fadeUp 1.2s ease;
 }
 
 .thank-text h1 {
-    font-size: 70px;
+    font-size: 55px;
     margin: 0;
     color: #00adb5;
-    letter-spacing: 3px;
-
-    text-shadow: 0 0 20px rgba(0,173,181,0.5);
-    animation: glow 2.5s ease-in-out infinite alternate;
+    letter-spacing: 2px;
+    text-shadow: 0 0 15px rgba(0,173,181,0.4);
 }
 
 .thank-text p {
-    font-size: 20px;
     color: #ddd;
+    font-size: 18px;
     margin-top: 10px;
-    animation: fadeUp 1.5s ease forwards;
 }
 
 .thank-text .sub {
     display: block;
-    margin-top: 10px;
+    margin-top: 8px;
     font-size: 14px;
     color: #888;
     letter-spacing: 1px;
-    animation: fadeUp 1.8s ease forwards;
-}
-@keyframes thankPop {
-    from {
-        opacity: 0;
-        transform: scale(0.8) translateY(40px);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1) translateY(0);
-    }
-}
-
-@keyframes fadeUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes glow {
-    from {
-        text-shadow: 0 0 10px rgba(0,173,181,0.3);
-    }
-    to {
-        text-shadow: 0 0 25px rgba(0,173,181,0.8);
-    }
 }
 
 /* animation */
