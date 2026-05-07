@@ -267,28 +267,98 @@ nav.scrolled {
 /* profile badge */
 .hero-badge {
   position: absolute;
-  top: 140px;
-  right: 40px;
-  width: 140px;
-  height: 140px;
+  top: 120px;
+  right: 60px;
+  width: 220px;
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   opacity: 0;
   animation: fadeIn 1s 0.6s var(--ease) forwards;
 }
+
+/* the actual photo */
 .hero-badge img {
-  width: 140px; height: 140px;
+  width: 190px;
+  height: 190px;
   border-radius: 50%;
   object-fit: cover;
-  border: 1px solid rgba(0,194,204,0.3);
-  filter: grayscale(20%);
+  object-position: top center;
+  border: 2px solid rgba(0,194,204,0.5);
+  filter: grayscale(10%);
+  position: relative;
+  z-index: 3;
+  box-shadow:
+    0 0 0 6px rgba(0,194,204,0.06),
+    0 20px 60px rgba(0,0,0,0.6);
+  transition: filter 0.4s, transform 0.4s;
 }
+.hero-badge:hover img {
+  filter: grayscale(0%);
+  transform: scale(1.03);
+}
+
+/* ring 1 — slow solid spin */
 .badge-ring {
   position: absolute;
-  inset: -10px;
+  inset: -8px;
   border-radius: 50%;
-  border: 1px dashed rgba(0,194,204,0.25);
-  animation: spin 20s linear infinite;
+  border: 1.5px solid rgba(0,194,204,0.35);
+  animation: spin 18s linear infinite;
+  z-index: 2;
 }
-@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ring 2 — dashed counter-spin */
+.badge-ring-2 {
+  position: absolute;
+  inset: -20px;
+  border-radius: 50%;
+  border: 1px dashed rgba(0,194,204,0.2);
+  animation: spinRev 28s linear infinite;
+  z-index: 1;
+}
+
+/* ring 3 — outer glow pulse */
+.badge-ring-3 {
+  position: absolute;
+  inset: -34px;
+  border-radius: 50%;
+  border: 1px solid rgba(0,194,204,0.08);
+  animation: spin 40s linear infinite, ringPulse 4s ease-in-out infinite;
+  z-index: 0;
+}
+
+/* dots on ring 1 */
+.badge-dot {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--accent);
+  top: 50%;
+  left: -3px;
+  transform: translateY(-50%);
+  z-index: 4;
+}
+.badge-dot-2 {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: rgba(0,194,204,0.6);
+  border-radius: 50%;
+  bottom: 8%;
+  right: -2px;
+  z-index: 4;
+}
+
+@keyframes spin    { to { transform: rotate(360deg); } }
+@keyframes spinRev { to { transform: rotate(-360deg); } }
+@keyframes ringPulse {
+  0%, 100% { opacity: 0.4; }
+  50%       { opacity: 1; }
+}
 
 /* ═══════════════════════════════════════════
    SECTION LAYOUT
@@ -523,7 +593,7 @@ nav.scrolled {
 }
 .video-item {
   position: relative;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 1/1;
   overflow: hidden;
   background: var(--surface);
   cursor: none;
@@ -578,7 +648,7 @@ nav.scrolled {
 }
 .ui-grid img {
   width: 100%;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 16/9;
   object-fit: cover;
   display: block;
   filter: brightness(0.8) saturate(0.9);
@@ -791,6 +861,226 @@ footer {
 /* ═══════════════════════════════════════════
    RESPONSIVE
 ═══════════════════════════════════════════ */
+/* ═══════════════════════════════════════════
+   SERVICES
+═══════════════════════════════════════════ */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+}
+.service-card {
+  background: var(--surface);
+  padding: 40px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  transition: background 0.3s;
+  cursor: none;
+  position: relative;
+  overflow: hidden;
+}
+.service-card::before {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 100%; height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s var(--ease);
+}
+.service-card:hover { background: var(--surface2); }
+.service-card:hover::before { transform: scaleX(1); }
+.service-icon {
+  font-size: 28px;
+  color: var(--accent);
+  opacity: 0.8;
+}
+.service-num {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--muted);
+  margin-left: auto;
+  margin-top: -20px;
+}
+.service-title {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--white);
+  line-height: 1.2;
+}
+.service-desc {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.8;
+  flex: 1;
+}
+.service-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.service-tag {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border: 1px solid rgba(0,194,204,0.2);
+  padding: 3px 8px;
+  border-radius: 2px;
+}
+
+/* ═══════════════════════════════════════════
+   WORK PROCESS
+═══════════════════════════════════════════ */
+.process-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.process-item {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 40px;
+  align-items: start;
+  padding: 48px 0;
+  border-bottom: 1px solid var(--border);
+  cursor: none;
+  transition: padding-left 0.4s var(--ease);
+}
+.process-item:first-child { border-top: 1px solid var(--border); }
+.process-item:hover { padding-left: 12px; }
+.process-step {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 56px;
+  font-weight: 300;
+  color: rgba(0,194,204,0.15);
+  line-height: 1;
+  transition: color 0.3s;
+}
+.process-item:hover .process-step { color: rgba(0,194,204,0.4); }
+.process-body {}
+.process-title {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  color: var(--white);
+  margin-bottom: 12px;
+}
+.process-text {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.9;
+  max-width: 600px;
+}
+
+/* ═══════════════════════════════════════════
+   STATS COUNTER
+═══════════════════════════════════════════ */
+.stats-band {
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+.stat-item {
+  padding: 60px 40px;
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  cursor: none;
+  transition: background 0.3s;
+}
+.stat-item:last-child { border-right: none; }
+.stat-item:hover { background: var(--surface); }
+.stat-number {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(44px, 5vw, 72px);
+  font-weight: 300;
+  color: var(--white);
+  line-height: 1;
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+.stat-number sup {
+  font-size: 0.4em;
+  color: var(--accent);
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+}
+.stat-label {
+  font-size: var(--fs-label);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+/* ═══════════════════════════════════════════
+   FAQ
+═══════════════════════════════════════════ */
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.faq-item {
+  border-bottom: 1px solid var(--border);
+  overflow: hidden;
+}
+.faq-item:first-child { border-top: 1px solid var(--border); }
+.faq-question {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 28px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  text-align: left;
+  cursor: none;
+  color: var(--white);
+  font-family: 'Syne', sans-serif;
+  font-weight: 600;
+  font-size: 17px;
+  transition: color 0.2s;
+}
+.faq-question:hover { color: var(--accent); }
+.faq-icon {
+  flex-shrink: 0;
+  width: 24px; height: 24px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--muted);
+  font-size: 16px;
+  transition: all 0.3s;
+}
+.faq-item.open .faq-icon {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: rotate(45deg);
+}
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s var(--ease), padding 0.3s;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.9;
+}
+.faq-item.open .faq-answer {
+  max-height: 200px;
+  padding-bottom: 28px;
+}
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE (ADDITIONS)
+═══════════════════════════════════════════ */
 @media (max-width: 768px) {
   nav { padding: 18px 20px; }
   nav.scrolled { padding: 14px 20px; }
@@ -804,6 +1094,11 @@ footer {
   .contact-block { grid-template-columns: 1fr; }
   footer { flex-direction: column; gap: 8px; text-align: center; }
   .video-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+  .services-grid { grid-template-columns: 1fr; }
+  .stats-band { grid-template-columns: repeat(2, 1fr); }
+  .stat-item:nth-child(2) { border-right: none; }
+  .testimonials-grid { grid-template-columns: 1fr; }
+  .process-item { grid-template-columns: 50px 1fr; gap: 20px; }
 }
 </style>
 </head>
@@ -821,6 +1116,7 @@ footer {
   <a href="#home" class="nav-logo">Drew<span>.</span></a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
     <li><a href="#works">Works</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
@@ -830,7 +1126,12 @@ footer {
 <section id="home">
   <!-- profile badge -->
   <div class="hero-badge">
-    <div class="badge-ring"></div>
+    <div class="badge-ring-3"></div>
+    <div class="badge-ring-2"></div>
+    <div class="badge-ring">
+      <div class="badge-dot"></div>
+      <div class="badge-dot-2"></div>
+    </div>
     <img src="pfp.jpg" alt="Drew Morales">
   </div>
 
@@ -996,7 +1297,6 @@ footer {
     <div class="video-item"><div class="video-num">11</div><video autoplay muted loop playsinline><source src="video 11.mp4" type="video/mp4"></video><div class="video-overlay"></div></div>
     <div class="video-item"><div class="video-num">12</div><video autoplay muted loop playsinline><source src="video 12.mp4" type="video/mp4"></video><div class="video-overlay"></div></div>
     <div class="video-item"><div class="video-num">13</div><video autoplay muted loop playsinline><source src="video 13.mp4" type="video/mp4"></video><div class="video-overlay"></div></div>
-    <div class="video-item"><div class="video-num">13</div><video autoplay muted loop playsinline><source src="video 14.mp4" type="video/mp4"></video><div class="video-overlay"></div></div>
   </div>
 </section>
 
@@ -1039,6 +1339,310 @@ footer {
   </div>
 </section>
 
+<!-- ═══════════ SERVICES ═══════════ -->
+<section class="section" id="services">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <span class="section-num">06</span>
+      <h2 class="section-title">Services</h2>
+      <div class="section-line"></div>
+    </div>
+    <p class="reveal" style="color:var(--muted); margin-bottom:48px; font-size:13px; max-width:560px; line-height:1.9;">
+      Here's what I can do for you — from raw footage to polished visuals,
+      I handle every step with intention and craft.
+    </p>
+
+    <div class="services-grid reveal">
+
+      <div class="service-card">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+          <div class="service-icon">▶</div>
+          <span class="service-num">01</span>
+        </div>
+        <div class="service-title">Video Editing</div>
+        <p class="service-desc">
+          From raw clips to cinematic cuts — I craft videos with rhythm,
+          transitions, color grading, and motion that keep viewers hooked.
+        </p>
+        <div class="service-tags">
+          <span class="service-tag">Premiere Pro</span>
+          <span class="service-tag">After Effects</span>
+          <span class="service-tag">Color Grade</span>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+          <div class="service-icon">✦</div>
+          <span class="service-num">02</span>
+        </div>
+        <div class="service-title">Graphic Design</div>
+        <p class="service-desc">
+          Posters, social media content, brand visuals, and print layouts
+          designed with a strong sense of typography and composition.
+        </p>
+        <div class="service-tags">
+          <span class="service-tag">Canva</span>
+          <span class="service-tag">Photoshop</span>
+          <span class="service-tag">Branding</span>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+          <div class="service-icon">◻</div>
+          <span class="service-num">03</span>
+        </div>
+        <div class="service-title">UI / UX Design</div>
+        <p class="service-desc">
+          Clean, intuitive interface design for apps and websites — focused
+          on user flow, visual hierarchy, and modern aesthetics.
+        </p>
+        <div class="service-tags">
+          <span class="service-tag">Figma</span>
+          <span class="service-tag">Wireframing</span>
+          <span class="service-tag">Prototyping</span>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+          <div class="service-icon">◈</div>
+          <span class="service-num">04</span>
+        </div>
+        <div class="service-title">Motion Graphics</div>
+        <p class="service-desc">
+          Animated intros, lower thirds, kinetic text, and visual effects
+          that bring energy and professionalism to any video production.
+        </p>
+        <div class="service-tags">
+          <span class="service-tag">After Effects</span>
+          <span class="service-tag">Animation</span>
+          <span class="service-tag">VFX</span>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+          <div class="service-icon">⊞</div>
+          <span class="service-num">05</span>
+        </div>
+        <div class="service-title">Social Media Content</div>
+        <p class="service-desc">
+          Reels, short-form edits, carousels, and branded templates
+          optimized for engagement on Instagram, TikTok, and Facebook.
+        </p>
+        <div class="service-tags">
+          <span class="service-tag">Reels</span>
+          <span class="service-tag">TikTok</span>
+          <span class="service-tag">Templates</span>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+          <div class="service-icon">⌗</div>
+          <span class="service-num">06</span>
+        </div>
+        <div class="service-title">Web Layout Design</div>
+        <p class="service-desc">
+          Simple, well-structured HTML & CSS layouts — portfolio pages,
+          landing pages, and personal sites built clean from scratch.
+        </p>
+        <div class="service-tags">
+          <span class="service-tag">HTML</span>
+          <span class="service-tag">CSS</span>
+          <span class="service-tag">Responsive</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ STATS ═══════════ -->
+<div class="stats-band reveal">
+  <div class="stat-item">
+    <div class="stat-number">
+      <span class="count-up" data-target="50">0</span>
+      <sup>+</sup>
+    </div>
+    <div class="stat-label">Projects Completed</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">
+      <span class="count-up" data-target="13">0</span>
+      <sup>+</sup>
+    </div>
+    <div class="stat-label">Video Edits</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">
+      <span class="count-up" data-target="4">0</span>
+      <sup>yrs</sup>
+    </div>
+    <div class="stat-label">Years of Practice</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">
+      <span class="count-up" data-target="5">0</span>
+      <sup>+</sup>
+    </div>
+    <div class="stat-label">Tools Mastered</div>
+  </div>
+</div>
+
+<!-- ═══════════ PROCESS ═══════════ -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <span class="section-num">07</span>
+      <h2 class="section-title">How I Work</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="process-list">
+
+      <div class="process-item reveal">
+        <div class="process-step">01</div>
+        <div class="process-body">
+          <div class="process-title">Discovery & Brief</div>
+          <p class="process-text">
+            I start by understanding your goals, audience, and vision.
+            Whether it's a video edit, design piece, or UI screen — knowing
+            the <em>why</em> behind the project shapes every creative decision I make.
+          </p>
+        </div>
+      </div>
+
+      <div class="process-item reveal">
+        <div class="process-step">02</div>
+        <div class="process-body">
+          <div class="process-title">Concept & Planning</div>
+          <p class="process-text">
+            Before touching any tool, I sketch the structure — storyboard for videos,
+            wireframes for UI, mood boards for design. A clear plan means
+            fewer revisions and faster delivery.
+          </p>
+        </div>
+      </div>
+
+      <div class="process-item reveal">
+        <div class="process-step">03</div>
+        <div class="process-body">
+          <div class="process-title">Creation & Execution</div>
+          <p class="process-text">
+            This is where the magic happens. I execute with precision — editing,
+            designing, animating — with constant attention to detail,
+            pacing, color, and visual consistency.
+          </p>
+        </div>
+      </div>
+
+      <div class="process-item reveal">
+        <div class="process-step">04</div>
+        <div class="process-body">
+          <div class="process-title">Review & Refinement</div>
+          <p class="process-text">
+            I welcome feedback and iterate until the output feels right.
+            Good work doesn't happen in the first draft — it's refined
+            through honest review and careful adjustments.
+          </p>
+        </div>
+      </div>
+
+      <div class="process-item reveal">
+        <div class="process-step">05</div>
+        <div class="process-body">
+          <div class="process-title">Final Delivery</div>
+          <p class="process-text">
+            Clean, export-ready files delivered in your preferred format.
+            I make sure everything is organized, labeled, and easy to use
+            — because the handoff is part of the work.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════ FAQ ═══════════ -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <span class="section-num">09</span>
+      <h2 class="section-title">FAQ</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="faq-list reveal">
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Are you available for freelance work?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          Yes! I'm open to freelance projects — video editing, graphic design, UI/UX,
+          or social media content. Feel free to reach out via email or Instagram and
+          let's talk about what you need.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          How long does a typical project take?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          It depends on the scope. A single social media graphic can be done same-day,
+          while a full video edit or UI design project typically takes 3–7 days.
+          I always confirm a timeline upfront before starting.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          What file formats do you deliver?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          For videos: MP4 (H.264 or H.265), MOV. For graphics: PNG, JPG, PDF, or
+          editable Canva/PSD files on request. For UI: Figma files or exported
+          PNG/PDF screens. I'll match whatever format you need.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Do you offer revisions?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          Absolutely. I include up to 2 rounds of revisions in every project.
+          I want the final output to feel right for you — so feedback is always welcome
+          and part of my process.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Can you work with a tight deadline?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          Yes, I can accommodate rush projects depending on my availability.
+          Just message me early and we'll figure out a timeline that works.
+          Clear communication is key for fast turnaround.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- ═══════════ CONTACT ═══════════ -->
 <section class="section" id="contact">
   <div class="section-inner">
@@ -1061,7 +1665,7 @@ footer {
       </a>
       <a href="https://www.instagram.com/_chaepuccino/" target="_blank" class="contact-item">
         <span class="contact-type">Instagram</span>
-        <span class="contact-value">@Drewmorales</span>
+        <span class="contact-value">@DrewMorales</span>
         <span class="contact-arrow">↗</span>
       </a>
       <div class="contact-item" style="cursor:none;">
@@ -1168,6 +1772,37 @@ const skillObs = new IntersectionObserver(entries => {
   });
 }, { threshold: 0.3 });
 document.querySelectorAll('.skills-block').forEach(el => skillObs.observe(el));
+
+/* COUNT-UP STATS */
+const countObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    e.target.querySelectorAll('.count-up').forEach(el => {
+      const target = +el.dataset.target;
+      const dur = 1800;
+      const step = 16;
+      const inc = target / (dur / step);
+      let cur = 0;
+      const timer = setInterval(() => {
+        cur = Math.min(cur + inc, target);
+        el.textContent = Math.floor(cur);
+        if (cur >= target) clearInterval(timer);
+      }, step);
+    });
+    countObs.unobserve(e.target);
+  });
+}, { threshold: 0.4 });
+document.querySelectorAll('.stats-band').forEach(el => countObs.observe(el));
+
+/* FAQ ACCORDION */
+document.querySelectorAll('.faq-question').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  });
+});
 </script>
 </body>
 </html>
